@@ -9,8 +9,6 @@ const { validateLoginData, validateSignUpData } = require('../utils/validators')
 const { response } = require('express')
 
 exports.loginUser = (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
-
   const user = {
     email: req.body.email,
     password: req.body.password
@@ -34,7 +32,6 @@ exports.loginUser = (req, res) => {
 }
 
 exports.signUpUser = (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
   const newUser = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -155,7 +152,6 @@ exports.uploadProfilePhoto = (req, res) => {
 }
 
 exports.getUserDetail = (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
   let userData = {}
   db.doc(`/users/${req.user.username}`)
     .get()
@@ -172,7 +168,6 @@ exports.getUserDetail = (req, res) => {
 }
 
 exports.updateUserDetails = (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
   let document = db.collection('users').doc(`${req.user.username}`)
   document.update(req.body)
     .then(() => {

@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Container from '@mui/material/Container'
 import { Avatar, Button, CircularProgress, CssBaseline, Grid, Link, TextField, Typography } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { BACKEND_URL, LOCAL_BACKEND_URL } from '../utils/vars'
 
 const styles = (theme) => ({
   paper: {
@@ -54,7 +56,7 @@ const Login = ({ classes = styles }) => {
       email: email,
       password: password
     }
-    axios.post('https://us-central1-todos-e176c.cloudfunctions.net/api/login', userData)
+    axios.post(`${LOCAL_BACKEND_URL}/login`, userData)
       .then(response => {
         localStorage.setItem('AuthToken', `Bearer ${response.data.token}`)
         setLoading(false)

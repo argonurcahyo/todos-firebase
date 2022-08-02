@@ -17,6 +17,14 @@ const {
     updateUserDetails
 } = require('./apis/users')
 
+// a middleware with no mount path; gets executed for every request to the app
+app.use(function (req, res, next) {
+    res.setHeader('charset', 'utf-8')
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    next();
+});
+
 app.get('/', getAllTodos)
 app.get('/todos', auth, getAllTodos)
 app.post('/todo', auth, postOneTodo)
