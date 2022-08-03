@@ -1,6 +1,6 @@
-export const authMiddleware = history => {
+export const authMiddleware = navigate => {
     const authToken = localStorage.getItem('AuthToken')
     if (authToken === null) {
-        history.push('/login')
+        navigate('/login')
     }
 }

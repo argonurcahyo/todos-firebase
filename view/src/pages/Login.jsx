@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Container from '@mui/material/Container'
-import { Avatar, Button, CircularProgress, CssBaseline, Grid, Link, TextField, Typography } from '@mui/material'
+import { Avatar, Box, Button, CircularProgress, CssBaseline, Grid, Link, TextField, Typography } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { BACKEND_URL, LOCAL_BACKEND_URL } from '../utils/vars'
 
@@ -71,14 +71,14 @@ const Login = ({ classes = styles }) => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Box sx={classes.paper}>
+        <Avatar sx={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant='h5'>
           Login
         </Typography>
-        <form className={classes.form} noValidate>
+        <form sx={classes.form} noValidate>
           <TextField
             variant='outlined'
             margin='normal'
@@ -112,12 +112,12 @@ const Login = ({ classes = styles }) => {
             fullWidth
             variant='contained'
             color="primary"
-            className={classes.submit}
+            sx={classes.submit}
             onClick={handleSubmit}
             disabled={loading || !email || !password}
           >
             Sign In
-            {loading && <CircularProgress size={30} className={classes.progress} />}
+            {loading && <CircularProgress size={30} sx={classes.progress} />}
           </Button>
           <Grid container>
             <Grid item>
@@ -127,12 +127,12 @@ const Login = ({ classes = styles }) => {
             </Grid>
           </Grid>
           {errors?.general && (
-            <Typography variant='body2' className={classes.customError}>
+            <Typography variant='body2' sx={classes.customError}>
               {errors?.general}
             </Typography>
           )}
         </form>
-      </div>
+      </Box>
     </Container>
   )
 }
